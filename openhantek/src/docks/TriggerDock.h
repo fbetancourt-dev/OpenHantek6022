@@ -50,6 +50,9 @@ class TriggerDock : public QDockWidget {
     /// \param scope Settings to load
     void loadSettings( DsoSettingsScope *scope );
     void timebaseChanged( double timebase );
+    void selectMode( Dso::TriggerMode mode );
+    void selectSlope( Dso::Slope slope );
+    void selectSource( int id );
 
   protected:
     void closeEvent( QCloseEvent *event ) override;

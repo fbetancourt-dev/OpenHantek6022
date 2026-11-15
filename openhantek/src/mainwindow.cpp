@@ -7,6 +7,7 @@
 #include "SpectrumDock.h"
 #include "TriggerDock.h"
 #include "VoltageDock.h"
+#include "openhantek_ipc.h"
 
 #include "configdialog.h"
 #include "dockwindows.h"
@@ -215,6 +216,10 @@ MainWindow::MainWindow( HantekDsoControl *dsoControl, DsoSettings *settings, Exp
     addDockWidget( Qt::RightDockWidgetArea, horizontalDock );
     addDockWidget( Qt::RightDockWidgetArea, triggerDock );
     addDockWidget( Qt::RightDockWidgetArea, spectrumDock );
+
+    // IPC Server for automated telemetry and control hooks
+    ipcServer = new OpenHantekIpcServer( voltageDock, horizontalDock, triggerDock, dsoSettings, this );
+    ipcServer->startServer();
 
     restoreGeometry( dsoSettings->mainWindowGeometry );
     restoreState( dsoSettings->mainWindowState );
@@ -558,6 +563,8 @@ MainWindow::~MainWindow() {
 void MainWindow::showNewData( std::shared_ptr< PPresult > newData ) {
     if ( dsoSettings->scope.verboseLevel > 5 )
         qDebug() << "     MainWindow::showNewData()" << newData->tag;
+    if ( ipcServer )
+        ipcServer->updateMetrics( newData );
     dsoWidget->showNew( newData );
 }
 

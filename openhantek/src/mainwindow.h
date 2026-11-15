@@ -21,6 +21,7 @@ class TriggerDock;
 class SpectrumDock;
 class VoltageDock;
 class QAction;
+class OpenHantekIpcServer;
 
 namespace Ui {
 class MainWindow;
@@ -60,6 +61,7 @@ class MainWindow : public QMainWindow {
     // Settings used for the whole program
     DsoSettings *dsoSettings;
     ExporterRegistry *exporterRegistry;
+    OpenHantekIpcServer *ipcServer = nullptr;
 
     // Taking screenshots
     enum screenshotType_t { SCREENSHOT, HARDCOPY, PRINTER };

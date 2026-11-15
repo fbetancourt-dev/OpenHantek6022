@@ -60,6 +60,10 @@ class VoltageDock : public QDockWidget {
     /// \param used True if the channel should be inverted, false otherwise.
     void setInverted( ChannelID channel, bool inverted );
 
+    void selectGain( ChannelID channel, unsigned gainStepIndex );
+    void selectUsed( ChannelID channel, bool used );
+    void selectCoupling( ChannelID channel, unsigned couplingIndex );
+
   public slots:
     /// \brief Loads settings into GUI
     /// \param scope Settings to load

@@ -274,3 +274,22 @@ void VoltageDock::updateGainStrings( double attnValue ) {
         gainStrings << valueToString( gainStep.Vdiv * attnValue, UNIT_VOLTS, 0 );
     }
 }
+
+void VoltageDock::selectGain( ChannelID channel, unsigned gainStepIndex ) {
+    if ( channel < channelBlocks.size() && gainStepIndex < unsigned( channelBlocks[ channel ].gainComboBox->count() ) ) {
+        channelBlocks[ channel ].gainComboBox->setCurrentIndex( int( gainStepIndex ) );
+    }
+}
+
+void VoltageDock::selectUsed( ChannelID channel, bool used ) {
+    if ( channel < channelBlocks.size() ) {
+        channelBlocks[ channel ].usedCheckBox->setChecked( used );
+    }
+}
+
+void VoltageDock::selectCoupling( ChannelID channel, unsigned couplingIndex ) {
+    if ( channel < channelBlocks.size() && couplingIndex < unsigned( channelBlocks[ channel ].miscComboBox->count() ) ) {
+        channelBlocks[ channel ].miscComboBox->setCurrentIndex( int( couplingIndex ) );
+    }
+}
+

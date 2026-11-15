@@ -26,6 +26,8 @@ class CapturingThread : public QThread {
     uint8_t lastSampleCh2 = 0x80;
     std::vector< uint8_t > fifoBufferCh1;
     std::vector< uint8_t > fifoBufferCh2;
+    std::vector< uint8_t > fifoHistoryCh1;
+    std::vector< uint8_t > fifoHistoryCh2;
     unsigned channels = 0;
     double effectiveSamplerate = 0;
     bool realSlow = false;

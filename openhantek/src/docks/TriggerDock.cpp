@@ -165,3 +165,23 @@ void TriggerDock::setSmooth( int smooth ) {
     QSignalBlocker blocker( smoothComboBox );
     smoothComboBox->setCurrentIndex( int( smooth ) );
 }
+
+void TriggerDock::selectMode( Dso::TriggerMode mode ) {
+    int index = int( std::find( mSpec->triggerModes.begin(), mSpec->triggerModes.end(), mode ) - mSpec->triggerModes.begin() );
+    if ( index >= 0 && index < modeComboBox->count() ) {
+        modeComboBox->setCurrentIndex( index );
+    }
+}
+
+void TriggerDock::selectSlope( Dso::Slope slope ) {
+    if ( int( slope ) < slopeComboBox->count() ) {
+        slopeComboBox->setCurrentIndex( int( slope ) );
+    }
+}
+
+void TriggerDock::selectSource( int id ) {
+    if ( id >= 0 && id < sourceComboBox->count() ) {
+        sourceComboBox->setCurrentIndex( id );
+    }
+}
+

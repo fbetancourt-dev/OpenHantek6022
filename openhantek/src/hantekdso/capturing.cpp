@@ -298,9 +298,15 @@ unsigned CapturingThread::getFifoSamples() {
                     if ( ch == 0 ) {
                         lastSampleCh1 = sample;
                         fifoBufferCh1.push_back( sample );
+                        fifoHistoryCh1.push_back( sample );
+                        if ( fifoHistoryCh1.size() > 4096 )
+                            fifoHistoryCh1.erase( fifoHistoryCh1.begin(), fifoHistoryCh1.begin() + 1024 );
                     } else if ( ch == 1 ) {
                         lastSampleCh2 = sample;
                         fifoBufferCh2.push_back( sample );
+                        fifoHistoryCh2.push_back( sample );
+                        if ( fifoHistoryCh2.size() > 4096 )
+                            fifoHistoryCh2.erase( fifoHistoryCh2.begin(), fifoHistoryCh2.begin() + 1024 );
                     }
                 }
                 line = strtok_r( nullptr, "\r\n", &saveptr );
@@ -311,14 +317,21 @@ unsigned CapturingThread::getFifoSamples() {
     dp->resize( rawSamplesize, binaryOffset );
     auto end = dp->end();
     size_t qIdx = 0;
+    size_t hIdx1 = 0;
+    size_t hIdx2 = 0;
     for ( auto it = dp->begin(); it != end; ++it ) {
         uint8_t s1 = lastSampleCh1;
         uint8_t s2 = lastSampleCh2;
         if ( qIdx < fifoBufferCh1.size() ) {
             s1 = fifoBufferCh1[ qIdx ];
+        } else if ( !fifoHistoryCh1.empty() ) {
+            s1 = fifoHistoryCh1[ ( hIdx1++ ) % fifoHistoryCh1.size() ];
         }
+
         if ( qIdx < fifoBufferCh2.size() ) {
             s2 = fifoBufferCh2[ qIdx ];
+        } else if ( !fifoHistoryCh2.empty() ) {
+            s2 = fifoHistoryCh2[ ( hIdx2++ ) % fifoHistoryCh2.size() ];
         }
         qIdx++;
 

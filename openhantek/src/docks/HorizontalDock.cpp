@@ -290,3 +290,8 @@ void HorizontalDock::calfreqIndexSelected( int index ) {
     scope->horizontal.calfreq = calfreq;
     emit calfreqChanged( calfreq );
 }
+
+void HorizontalDock::selectTimebase( double timebase ) {
+    timebaseSelected( timebase );
+}
+

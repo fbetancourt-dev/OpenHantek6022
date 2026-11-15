@@ -1169,7 +1169,7 @@
         <translation type="vanished">Панели инструментов</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="135"/>
+        <location filename="../src/mainwindow.cpp" line="136"/>
         <source>OpenHantek6022 (%1) - Device %2 (FW%3)</source>
         <translation>OpenHantek6022 (%1) - Устройство %2 (Прошивка %3)</translation>
     </message>
@@ -1178,17 +1178,17 @@
         <translation type="vanished">Снимок экрана ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="272"/>
+        <location filename="../src/mainwindow.cpp" line="277"/>
         <source>Invalid command</source>
         <translation>Неправильная команда</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="385"/>
+        <location filename="../src/mainwindow.cpp" line="390"/>
         <source>Stop the oscilloscope</source>
         <translation>Стоп осциллографа</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="384"/>
+        <location filename="../src/mainwindow.cpp" line="389"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
@@ -1197,12 +1197,12 @@
         <translation type="vanished">OpenHantek6022 (%1) - Устройство %2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="138"/>
+        <location filename="../src/mainwindow.cpp" line="139"/>
         <source>Demo Mode</source>
         <translation>Демо Режим</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="138"/>
+        <location filename="../src/mainwindow.cpp" line="139"/>
         <source>OpenHantek6022 (%1) - </source>
         <translation></translation>
     </message>
@@ -1223,24 +1223,24 @@
         <translation type="vanished">Печать осциллограммы ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="388"/>
-        <location filename="../src/mainwindow.cpp" line="590"/>
+        <location filename="../src/mainwindow.cpp" line="393"/>
+        <location filename="../src/mainwindow.cpp" line="597"/>
         <source>Start</source>
         <translation>Пуск</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="389"/>
+        <location filename="../src/mainwindow.cpp" line="394"/>
         <source>Start the oscilloscope</source>
         <translation>Пуск осциллографа</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="410"/>
+        <location filename="../src/mainwindow.cpp" line="415"/>
         <source>Open file</source>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="410"/>
-        <location filename="../src/mainwindow.cpp" line="435"/>
+        <location filename="../src/mainwindow.cpp" line="415"/>
+        <location filename="../src/mainwindow.cpp" line="440"/>
         <source>Settings (*.conf)</source>
         <translation>Настройки (*.conf)</translation>
     </message>
@@ -1253,133 +1253,133 @@
         <translation type="vanished">Настройки (*.ini)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="73"/>
+        <location filename="../src/mainwindow.cpp" line="74"/>
         <source>Start and stop the sampling</source>
         <translation>Старт и стоп выборки</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="79"/>
+        <location filename="../src/mainwindow.cpp" line="80"/>
         <source>Refresh the screen trace for slow &apos;Roll&apos; mode</source>
         <translation>Обновление развёртки экрана для медленного &apos;Скроллинг&apos; режима</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="85"/>
+        <location filename="../src/mainwindow.cpp" line="86"/>
         <source>Let the traces fade out slowly</source>
         <translation>Позволить лучам развёртки гаснуть медленно</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="91"/>
+        <location filename="../src/mainwindow.cpp" line="92"/>
         <source>Show a histogram of the voltage levels on the right side of the trace</source>
         <translation>Показывать гистограмму уровней напряжения на правой стороне развёртки</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="97"/>
+        <location filename="../src/mainwindow.cpp" line="98"/>
         <source>Zoom the range between the markers &apos;1&apos; and &apos;2&apos;</source>
         <translation>Увеличение диапазона между маркерами &apos;1&apos; и &apos;2&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="103"/>
+        <location filename="../src/mainwindow.cpp" line="104"/>
         <source>Enable cursor measurements</source>
         <translation>Включить измерения указателем</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="107"/>
+        <location filename="../src/mainwindow.cpp" line="108"/>
         <source>Load scope settings from a config file</source>
         <translation>Загрузить настройки осциллографа из файла конфигурации</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="109"/>
+        <location filename="../src/mainwindow.cpp" line="110"/>
         <source>Save the scope settings to the default location</source>
         <translation>Сохранить настройки осциллографа в папку по умолчанию</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="111"/>
+        <location filename="../src/mainwindow.cpp" line="112"/>
         <source>Save the scope settings to a user defined file</source>
         <translation>Сохранить настройки осциллографа в определённый пользователем файл</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="113"/>
+        <location filename="../src/mainwindow.cpp" line="114"/>
         <source>Exit the application</source>
         <translation>Выход из приложения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="115"/>
+        <location filename="../src/mainwindow.cpp" line="116"/>
         <source>Define scope settings, analysis parameters and colors</source>
         <translation>Выставить настройки осциллографа, параметры анализа и цвета отображения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="117"/>
-        <location filename="../src/mainwindow.cpp" line="244"/>
+        <location filename="../src/mainwindow.cpp" line="118"/>
+        <location filename="../src/mainwindow.cpp" line="249"/>
         <source>Short-circuit both inputs and slowly select all voltage gain settings</source>
         <translation>Замкните оба входа и медленно переберите все варианты усиления напряжения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="119"/>
+        <location filename="../src/mainwindow.cpp" line="120"/>
         <source>Send low level commands directly to the scope: &apos;CC XX XX&apos;</source>
         <translation>Отправить низкоуровневые комманды напрямую в осциллограф: &apos;CC XX XX&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="121"/>
+        <location filename="../src/mainwindow.cpp" line="122"/>
         <source>Read the fine manual</source>
         <translation>Прочитать отличное руководство</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="123"/>
+        <location filename="../src/mainwindow.cpp" line="124"/>
         <source>Documentation how to add HW for AC coupled inputs</source>
         <translation>Документация по аппаратной модифицикации входов под переменный ток</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="126"/>
+        <location filename="../src/mainwindow.cpp" line="127"/>
         <source>Documentation how to get jitter-free calibration frequency output</source>
         <translation>Документация о получении частоты выхода калибровки без джиттера</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="128"/>
+        <location filename="../src/mainwindow.cpp" line="129"/>
         <source>Show info about the scope&apos;s HW and SW</source>
         <translation>Показать инфу о софте и железе осциллографа</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="130"/>
+        <location filename="../src/mainwindow.cpp" line="131"/>
         <source>Show info about Qt</source>
         <translation>Показать инфу о Qt</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="144"/>
+        <location filename="../src/mainwindow.cpp" line="145"/>
         <source>&amp;Screenshot</source>
         <translation>&amp;Скриншот</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="145"/>
+        <location filename="../src/mainwindow.cpp" line="146"/>
         <source>Make an immediate screenshot of the program window and save it into the current directory</source>
         <translation>Сделать мгновенный снимок окна программы и сохранить его в текущем каталоге</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="149"/>
+        <location filename="../src/mainwindow.cpp" line="150"/>
         <source>&amp;Hardcopy</source>
         <translation>&amp;Печатная копия</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="150"/>
+        <location filename="../src/mainwindow.cpp" line="151"/>
         <source>Make an immediate (printable) hardcopy of the display and save it into the current directory</source>
         <translation>Сделать мгновенную (печатную) копию экрана и сохранить её в текущем каталоге</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="159"/>
+        <location filename="../src/mainwindow.cpp" line="160"/>
         <source>Save Screenshot As ..</source>
         <translation>Сохранить скриншот ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="164"/>
+        <location filename="../src/mainwindow.cpp" line="165"/>
         <source>Save Hardcopy As ..</source>
         <translation>Сохранить печатную копию ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="172"/>
+        <location filename="../src/mainwindow.cpp" line="173"/>
         <source>&amp;Print Screen ..</source>
         <translation>&amp;Печать экрана ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="518"/>
+        <location filename="../src/mainwindow.cpp" line="523"/>
         <source>&lt;p&gt;Open source software for Hantek6022 USB oscilloscopes&lt;/p&gt;&lt;p&gt;Maintainer: Martin Homuth-Rosemann&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2010, 2011 Oliver Haag&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012-%1 OpenHantek community&lt;br/&gt;&lt;a href=&apos;https://github.com/OpenHantek&apos;&gt;https://github.com/OpenHantek&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Open source firmware copyright &amp;copy; 2019-%1 Martin Homuth-Rosemann&lt;br/&gt;&lt;a href=&apos;https://github.com/Ho-Ro/Hantek6022API&apos;&gt;https://github.com/Ho-Ro/Hantek6022API&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;Открытое программное обеспечение для USB осциллографов Hantek6022&lt;/p&gt;&lt;p&gt;Мейнтейнер: Мартин Хомут-Розманн&lt;/p&gt;&lt;p&gt;Авторские права &amp;copy; 2010, 2011 Оливер Хааг&lt;/p&gt;&lt;p&gt;Авторские права &amp;copy; 2012-%1 Сообщество OpenHantek &lt;br/&gt;&lt;a href=&apos;https://github.com/OpenHantek&apos;&gt;https://github.com/OpenHantek&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Авторские права на открытую микропрограмму &amp;copy; 2019-%1 Martin Homuth-Rosemann&lt;br/&gt;&lt;a href=&apos;https://github.com/Ho-Ro/Hantek6022API&apos;&gt;https://github.com/Ho-Ro/Hantek6022API&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
@@ -1388,7 +1388,7 @@
         <translation type="vanished">Сохранить скриншот ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="160"/>
+        <location filename="../src/mainwindow.cpp" line="161"/>
         <source>Make a screenshot of the program window and define the storage location</source>
         <translation>Сделать скриншот окна программы и выбрать куда его сохранить</translation>
     </message>
@@ -1397,7 +1397,7 @@
         <translation type="vanished">Сохранить печатную копию ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="165"/>
+        <location filename="../src/mainwindow.cpp" line="166"/>
         <source>Make a (printable) hardcopy of the display and define the storage location</source>
         <translation>Сделать (печатную) копию экрана и выбрать куда её сохранить</translation>
     </message>
@@ -1406,72 +1406,72 @@
         <translation type="vanished">&amp;Печать экрана ..</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="174"/>
         <source>Send the hardcopy to a printer</source>
         <translation>Отправить печатную копию на принтер</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="184"/>
+        <location filename="../src/mainwindow.cpp" line="185"/>
         <source>Export captured data in %1 format for further processing</source>
         <translation>Экспорт захваченных данных в формате %1 для дальнейшей обработки</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="243"/>
+        <location filename="../src/mainwindow.cpp" line="248"/>
         <source>Calibrate Offset</source>
         <translation>Калибровка смещения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="435"/>
+        <location filename="../src/mainwindow.cpp" line="440"/>
         <source>Save settings</source>
         <translation>Сохранить настройки</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="461"/>
+        <location filename="../src/mainwindow.cpp" line="466"/>
         <source>Disable fading of previous graphs</source>
         <translation>Отключить угасание предыдущих графиков</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="463"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>Enable fading of previous graphs</source>
         <translation>Включить угасание предыдущих графиков</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="471"/>
+        <location filename="../src/mainwindow.cpp" line="476"/>
         <source>Hide histogram</source>
         <translation>Спрятать гистограмму</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="473"/>
+        <location filename="../src/mainwindow.cpp" line="478"/>
         <source>Show histogram</source>
         <translation>Показать гистограмму</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="482"/>
+        <location filename="../src/mainwindow.cpp" line="487"/>
         <source>Hide magnified scope</source>
         <translation>Спрятать область увеличения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="484"/>
+        <location filename="../src/mainwindow.cpp" line="489"/>
         <source>Show magnified scope</source>
         <translation>Показать область увеличения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="494"/>
+        <location filename="../src/mainwindow.cpp" line="499"/>
         <source>Hide measurements</source>
         <translation>Спрятать измерения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="496"/>
+        <location filename="../src/mainwindow.cpp" line="501"/>
         <source>Show measurements</source>
         <translation>Показать измерения</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="511"/>
+        <location filename="../src/mainwindow.cpp" line="516"/>
         <source>&lt;p&gt;Demo Mode&lt;/p&gt;</source>
         <translation>&lt;p&gt;Демо Режим&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="512"/>
+        <location filename="../src/mainwindow.cpp" line="517"/>
         <source>&lt;p&gt;Device: %1 (%2), FW%3&lt;/p&gt;</source>
         <translation></translation>
     </message>
@@ -1480,12 +1480,12 @@
         <translation type="vanished">&lt;p&gt;Открытое программное обеспечение для USB осциллографов Hantek6022&lt;/p&gt;&lt;p&gt;Мейнтейнер: Мартин Хомут-Розманн&lt;/p&gt;&lt;p&gt;Авторские права &amp;copy; 2010, 2011 Оливер Хааг&lt;/p&gt;&lt;p&gt;Авторские права &amp;copy; 2012-%1 Сообщество OpenHantek &lt;br/&gt;&lt;a href=&apos;https://github.com/OpenHantek&apos;&gt;https://github.com/OpenHantek&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Авторские права на открытую микропрограмму &amp;copy; 2019-%1 Ho-Ro&lt;br/&gt;&lt;a href=&apos;https://github.com/Ho-Ro/Hantek6022API&apos;&gt;https://github.com/Ho-Ro/Hantek6022API&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="529"/>
+        <location filename="../src/mainwindow.cpp" line="534"/>
         <source>&lt;p&gt;Graphic: %1 - GLSL version %2&lt;/p&gt;&lt;p&gt;Qt version: %3&lt;/p&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="682"/>
+        <location filename="../src/mainwindow.cpp" line="689"/>
         <source>Save Screenshot</source>
         <translation>Сохранить снимок экрана</translation>
     </message>
@@ -1506,45 +1506,45 @@
         <translation type="vanished">&lt;p&gt;Открытое программное обеспечение для USB осциллографов Hantek6022&lt;/p&gt;&lt;p&gt;Мейнтейнер: Мартин Хомут-Розманн&lt;/p&gt;&lt;p&gt;Авторские права &amp;copy; 2010, 2011 Оливер Хааг&lt;/p&gt;&lt;p&gt;Авторские права &amp;copy; 2012-2020 Сообщество OpenHantek &lt;br/&gt;&lt;a href=&apos;https://github.com/OpenHantek&apos;&gt;https://github.com/OpenHantek&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Авторские права на открытую микропрограмму &amp;copy; 2019-2020 Ho-Ro&lt;br/&gt;&lt;a href=&apos;https://github.com/Ho-Ro/Hantek6022API&apos;&gt;https://github.com/Ho-Ro/Hantek6022API&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="533"/>
+        <location filename="../src/mainwindow.cpp" line="538"/>
         <source>&lt;p&gt;Running since %1 seconds.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Работает в течение %1 секунд.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="568"/>
+        <location filename="../src/mainwindow.cpp" line="575"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="591"/>
+        <location filename="../src/mainwindow.cpp" line="598"/>
         <source>Oscilloscope unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="643"/>
+        <location filename="../src/mainwindow.cpp" line="650"/>
         <source>yyyy-MM-dd hh:mm:ss</source>
         <translation>yyyy-MM-dd hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="644"/>
+        <location filename="../src/mainwindow.cpp" line="651"/>
         <source>yyyyMMdd_hhmmss</source>
         <translation>yyyyMMdd_hhmmss</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="678"/>
-        <location filename="../src/mainwindow.cpp" line="692"/>
+        <location filename="../src/mainwindow.cpp" line="685"/>
+        <location filename="../src/mainwindow.cpp" line="699"/>
         <source>Write error
 %1</source>
         <translation>Ошибка записи
 %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="681"/>
+        <location filename="../src/mainwindow.cpp" line="688"/>
         <source>Image (*.png *.jpg)</source>
         <translation>Изображение (*.png *.jpg)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="681"/>
+        <location filename="../src/mainwindow.cpp" line="688"/>
         <source>Portable Document Format (*.pdf)</source>
         <translation>Portable Document Format (*.pdf)</translation>
     </message>
@@ -1553,7 +1553,7 @@
         <translation type="vanished">Сохранить снимок экрана</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="715"/>
+        <location filename="../src/mainwindow.cpp" line="722"/>
         <source>Print oscillograph</source>
         <translation>Печать осциллограммы</translation>
     </message>

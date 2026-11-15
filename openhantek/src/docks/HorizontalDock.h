@@ -64,6 +64,7 @@ class HorizontalDock : public QDockWidget {
     /// \param scope Settings to load
     void loadSettings( DsoSettingsScope *scope );
     void triggerModeChanged( Dso::TriggerMode mode );
+    void selectTimebase( double timebase );
 
   protected:
     void closeEvent( QCloseEvent *event ) override;
