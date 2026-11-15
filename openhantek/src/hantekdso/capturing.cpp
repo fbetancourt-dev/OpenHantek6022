@@ -6,6 +6,9 @@
 #include "usb/scopedevice.h"
 #include <QDebug>
 #include <cmath>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
 
 
 CapturingThread::CapturingThread( HantekDsoControl *hdc ) : hdc( hdc ) {
@@ -155,7 +158,9 @@ void CapturingThread::capture() {
         xferSamples();
     if ( 0 == ++tag )
         ++tag; // skip tag==0
-    if ( device->isRealHW() ) {
+    if ( !fifoPath.isEmpty() ) {
+        received = getFifoSamples();
+    } else if ( device->isRealHW() ) {
         received = getRealSamples( device );
     } else {
         received = getDemoSamples();
@@ -262,5 +267,81 @@ unsigned CapturingThread::getDemoSamples() {
         }
     }
     // timestampDebug( QString( "Received dummy packet %1: %2 bytes" ).arg( packet ).arg( rawSamplesize ) );
+    return received;
+}
+
+unsigned CapturingThread::getFifoSamples() {
+    const uint8_t binaryOffset = 0x80; // 0V level
+    unsigned received = 0;
+    hdc->raw.received = 0;
+
+    if ( fifoFd < 0 && !fifoPath.isEmpty() ) {
+        fifoFd = open( fifoPath.toLocal8Bit().constData(), O_RDONLY | O_NONBLOCK );
+        if ( fifoFd >= 0 ) {
+            qDebug() << ">>> [OpenHantek] Connected to Analog FIFO:" << fifoPath;
+        }
+    }
+
+    if ( fifoFd >= 0 ) {
+        char readBuf[4096];
+        ssize_t n = read( fifoFd, readBuf, sizeof(readBuf) - 1 );
+        if ( n > 0 ) {
+            readBuf[n] = '\0';
+            char *saveptr = nullptr;
+            char *line = strtok_r( readBuf, "\r\n", &saveptr );
+            while ( line != nullptr ) {
+                int ch = -1;
+                unsigned int rawVal = 0;
+                float volts = 0.0f;
+                if ( sscanf( line, "CH%d:%u,%fV", &ch, &rawVal, &volts ) == 3 ) {
+                    uint8_t sample = uint8_t( qBound( 0, int( ( rawVal * 255 ) / 4095 ), 255 ) );
+                    if ( ch == 0 ) {
+                        lastSampleCh1 = sample;
+                        fifoBufferCh1.push_back( sample );
+                    } else if ( ch == 1 ) {
+                        lastSampleCh2 = sample;
+                        fifoBufferCh2.push_back( sample );
+                    }
+                }
+                line = strtok_r( nullptr, "\r\n", &saveptr );
+            }
+        }
+    }
+
+    dp->resize( rawSamplesize, binaryOffset );
+    auto end = dp->end();
+    size_t qIdx = 0;
+    for ( auto it = dp->begin(); it != end; ++it ) {
+        uint8_t s1 = lastSampleCh1;
+        uint8_t s2 = lastSampleCh2;
+        if ( qIdx < fifoBufferCh1.size() ) {
+            s1 = fifoBufferCh1[ qIdx ];
+        }
+        if ( qIdx < fifoBufferCh2.size() ) {
+            s2 = fifoBufferCh2[ qIdx ];
+        }
+        qIdx++;
+
+        *it = s1;
+        ++received;
+        if ( 2 == channels ) {
+            *++it = s2;
+            ++received;
+        }
+    }
+
+    if ( fifoBufferCh1.size() > rawSamplesize ) {
+        fifoBufferCh1.erase( fifoBufferCh1.begin(), fifoBufferCh1.begin() + rawSamplesize );
+    } else {
+        fifoBufferCh1.clear();
+    }
+    if ( fifoBufferCh2.size() > rawSamplesize ) {
+        fifoBufferCh2.erase( fifoBufferCh2.begin(), fifoBufferCh2.begin() + rawSamplesize );
+    } else {
+        fifoBufferCh2.clear();
+    }
+
+    hdc->raw.received = received;
+    QThread::msleep( 25 );
     return received;
 }

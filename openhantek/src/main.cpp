@@ -84,6 +84,7 @@ int main( int argc, char *argv[] ) {
     QCoreApplication::setApplicationVersion( VERSION );
 
     bool demoMode = false;
+    QString fifoPath;
     bool autoConnect = true;
     bool useGLES = false;
     bool useGLSL120 = false;
@@ -154,6 +155,10 @@ int main( int argc, char *argv[] ) {
         QCommandLineOption demoModeOption( { "d", "demoMode" },
                                            QCoreApplication::translate( "main", "Demo mode without scope HW" ) );
         p.addOption( demoModeOption );
+        QCommandLineOption fifoOption( "fifo",
+                                       QCoreApplication::translate( "main", "Read live analog samples from Named Pipe FIFO (e.g. /tmp/qemu_dac_out)" ),
+                                       QCoreApplication::translate( "main", "Path" ) );
+        p.addOption( fifoOption );
         QCommandLineOption useGlesOption( { "e", "useGLES" },
                                           QCoreApplication::translate( "main", "Use OpenGL ES instead of OpenGL" ) );
         QCommandLineOption noAutoConnectOption( "noAutoConnect",
@@ -197,6 +202,10 @@ int main( int argc, char *argv[] ) {
         if ( p.isSet( configFileOption ) )
             configFileName = p.value( "config" );
         demoMode = p.isSet( demoModeOption );
+        if ( p.isSet( fifoOption ) ) {
+            fifoPath = p.value( fifoOption );
+            demoMode = true; // No physical USB scope needed
+        }
         autoConnect = !p.isSet( noAutoConnectOption );
         if ( p.isSet( fontOption ) )
             font = p.value( "font" );
@@ -534,6 +543,9 @@ int main( int argc, char *argv[] ) {
     postProcessingThread.start();
     dsoControlThread.start();
     CapturingThread capturingThread( &dsoControl ); // low level capture in separate thread
+    if ( !fifoPath.isEmpty() ) {
+        capturingThread.setFifoPath( fifoPath );
+    }
     capturingThread.start();
 
     if ( verboseLevel )

@@ -10,14 +10,22 @@ class CapturingThread : public QThread {
   public:
     CapturingThread( HantekDsoControl *hdc );
     void quitCapturing() { hdc->capturing = false; }
+    void setFifoPath( const QString &path ) { fifoPath = path; }
 
   private:
     void run() override;
     void capture();
     unsigned getRealSamples( ScopeDevice *device );
     unsigned getDemoSamples();
+    unsigned getFifoSamples();
     void xferSamples();
     HantekDsoControl *hdc;
+    QString fifoPath;
+    int fifoFd = -1;
+    uint8_t lastSampleCh1 = 0x80;
+    uint8_t lastSampleCh2 = 0x80;
+    std::vector< uint8_t > fifoBufferCh1;
+    std::vector< uint8_t > fifoBufferCh2;
     unsigned channels = 0;
     double effectiveSamplerate = 0;
     bool realSlow = false;
