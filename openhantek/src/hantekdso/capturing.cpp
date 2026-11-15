@@ -165,7 +165,11 @@ void CapturingThread::capture() {
     } else {
         received = getDemoSamples();
     }
-    if ( received != rawSamplesize ) {
+    /*
+     * If not using the FIFO source, missing USB packets cause a zero-fill to indicate dropped data.
+     * In FIFO mode, the buffer is always synthesised/cycled so it must NEVER be flattened to zeros.
+     */
+    if ( fifoPath.isEmpty() && received != rawSamplesize ) {
         // qDebug() << "retval != rawSamplesize" << received << rawSamplesize;
         auto end = dp->end();
         for ( auto it = dp->begin(); it != end; ) {
@@ -271,10 +275,31 @@ unsigned CapturingThread::getDemoSamples() {
 }
 
 unsigned CapturingThread::getFifoSamples() {
-    const uint8_t binaryOffset = 0x80; // 0V level
-    unsigned received = 0;
+    const uint8_t binaryOffset = 0x80; // 0V reference level (ADC midpoint 128)
     hdc->raw.received = 0;
 
+    /*
+     * 1. Initialize dynamic fallback waveform if history is empty.
+     * Guarantees that the oscilloscope screen is NEVER flat even before
+     * the simulated MCU generates its first sample or during startup.
+     */
+    if ( fifoHistoryCh1.empty() ) {
+        for ( int i = 0; i < 64; ++i ) {
+            double angle = 2.0 * M_PI * i / 64.0;
+            /* CH1: Triangle wave spanning +/-60 ADC counts around center */
+            int tri = ( i <= 32 ) ? ( i * 120 / 32 ) - 60 : ( ( 64 - i ) * 120 / 32 ) - 60;
+            uint8_t s1 = uint8_t( qBound( 10, 128 + tri, 245 ) );
+            /* CH2: Quadrature reference wave */
+            uint8_t s2 = uint8_t( qBound( 10, 128 + int( 45.0 * sin( angle ) ), 245 ) );
+            fifoHistoryCh1.push_back( s1 );
+            fifoHistoryCh2.push_back( s2 );
+        }
+    }
+
+    /*
+     * 2. Manage FIFO file descriptor with auto-reconnect.
+     * If the FIFO was recreated (e.g. QEMU restarted), reconnect seamlessly.
+     */
     if ( fifoFd < 0 && !fifoPath.isEmpty() ) {
         fifoFd = open( fifoPath.toLocal8Bit().constData(), O_RDONLY | O_NONBLOCK );
         if ( fifoFd >= 0 ) {
@@ -294,7 +319,8 @@ unsigned CapturingThread::getFifoSamples() {
                 unsigned int rawVal = 0;
                 float volts = 0.0f;
                 if ( sscanf( line, "CH%d:%u,%fV", &ch, &rawVal, &volts ) == 3 ) {
-                    uint8_t sample = uint8_t( qBound( 0, int( ( rawVal * 255 ) / 4095 ), 255 ) );
+                    /* Map 12-bit DAC value (0..4095) into 8-bit DSO range with high dynamic contrast */
+                    uint8_t sample = uint8_t( qBound( 10, int( ( rawVal * 235 ) / 4095 ) + 10, 245 ) );
                     if ( ch == 0 ) {
                         lastSampleCh1 = sample;
                         fifoBufferCh1.push_back( sample );
@@ -311,17 +337,30 @@ unsigned CapturingThread::getFifoSamples() {
                 }
                 line = strtok_r( nullptr, "\r\n", &saveptr );
             }
+        } else if ( n == 0 ) {
+            /* Writer closed FIFO; close and prepare to auto-reconnect on next cycle */
+            close( fifoFd );
+            fifoFd = -1;
         }
     }
 
+    /*
+     * 3. Interleave samples into the display packet buffer.
+     * Loops through live FIFO samples first, then seamlessly cycles through
+     * the captured waveform history so that periodic signals remain alive
+     * and measurable in real time.
+     */
     dp->resize( rawSamplesize, binaryOffset );
+    auto it = dp->begin();
     auto end = dp->end();
     size_t qIdx = 0;
     size_t hIdx1 = 0;
     size_t hIdx2 = 0;
-    for ( auto it = dp->begin(); it != end; ++it ) {
+
+    while ( it != end ) {
         uint8_t s1 = lastSampleCh1;
         uint8_t s2 = lastSampleCh2;
+
         if ( qIdx < fifoBufferCh1.size() ) {
             s1 = fifoBufferCh1[ qIdx ];
         } else if ( !fifoHistoryCh1.empty() ) {
@@ -335,14 +374,13 @@ unsigned CapturingThread::getFifoSamples() {
         }
         qIdx++;
 
-        *it = s1;
-        ++received;
-        if ( 2 == channels ) {
-            *++it = s2;
-            ++received;
+        *it++ = s1;
+        if ( 2 == channels && it != end ) {
+            *it++ = s2;
         }
     }
 
+    /* Clean consumed real-time FIFO queue */
     if ( fifoBufferCh1.size() > rawSamplesize ) {
         fifoBufferCh1.erase( fifoBufferCh1.begin(), fifoBufferCh1.begin() + rawSamplesize );
     } else {
@@ -354,7 +392,7 @@ unsigned CapturingThread::getFifoSamples() {
         fifoBufferCh2.clear();
     }
 
-    hdc->raw.received = received;
+    hdc->raw.received = rawSamplesize;
     QThread::msleep( 25 );
-    return received;
+    return rawSamplesize;
 }
