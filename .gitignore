@@ -18,3 +18,5 @@ firmware/hex
 ui_*.h
 *.sh
 .DS_Store
+openhantek/OpenHantek
+openhantek
