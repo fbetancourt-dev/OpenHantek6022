@@ -337,11 +337,8 @@ unsigned CapturingThread::getFifoSamples() {
                 }
                 line = strtok_r( nullptr, "\r\n", &saveptr );
             }
-        } else if ( n == 0 ) {
-            /* Writer closed FIFO; close and prepare to auto-reconnect on next cycle */
-            close( fifoFd );
-            fifoFd = -1;
         }
+        /* Keep FIFO open; if no new samples arrived this tick, historical buffer continues cycling */
     }
 
     /*
